@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.
 GetConnectionString("DefaultConnection")));
-//LiveConnection indien live DB omgeving
+//LiveConnection indien live DB omgeving, anders DefaultConnection
 
 
 var app = builder.Build();
