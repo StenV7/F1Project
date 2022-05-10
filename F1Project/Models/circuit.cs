@@ -13,7 +13,8 @@ namespace F1Project.Models
         [DataType(DataType.Url)]
         [StringLength(250, ErrorMessage = "MaximumLengte van {0} is {1} tekens")]
         public string? wiki { get; set; } = String.Empty;
-        public IEnumerable<Result> Races { get; set; } = Enumerable.Empty<Results>();
+        public Country? country { get; set; }
+        public IEnumerable<Result> Races { get; set; } = Enumerable.Empty<Result>();
 
 
     }
