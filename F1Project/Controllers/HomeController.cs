@@ -1,24 +1,32 @@
-﻿using F1Project.Models;
+﻿using F1Lib.ViewModels;
+using F1Project.Data;
+using F1Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+
 
 namespace F1Project.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        
+        // GET: Result
+        public async Task<IActionResult> Index()
         {
+            var SeasonRaces = //SeasonRaces storage variabele die Result.Year en Result.Racenumber.Count laat zien via ViewModel
+            _context.SeasonVMs.OrderBy(s => s.Year);
 
-            return View();
+            return View(SeasonRaces);
         }
-
         public IActionResult Privacy()
         {
             return View();
