@@ -150,7 +150,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("GrandPrixs");
+                    b.ToTable("Grandprix");
                 });
 
             modelBuilder.Entity("F1Project.Models.Result", b =>

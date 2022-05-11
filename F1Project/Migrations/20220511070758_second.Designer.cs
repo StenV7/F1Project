@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace F1Project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220511070439_second")]
+    [Migration("20220511070758_second")]
     partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,7 +152,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("GrandPrixs");
+                    b.ToTable("Grandprix");
                 });
 
             modelBuilder.Entity("F1Project.Models.Result", b =>
