@@ -15,6 +15,7 @@ namespace F1Project.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 

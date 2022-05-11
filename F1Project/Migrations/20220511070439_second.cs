@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace F1Project.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class second : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Country",
+                name: "Countries",
                 columns: table => new
                 {
                     CountryCode = table.Column<string>(type: "char(2)", maxLength: 2, nullable: false),
@@ -21,11 +21,11 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Country", x => x.CountryCode);
+                    table.PrimaryKey("PK_Countries", x => x.CountryCode);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Circuit",
+                name: "Circuits",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -39,16 +39,16 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Circuit", x => x.ID);
+                    table.PrimaryKey("PK_Circuits", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Circuit_Country_CountryCode",
+                        name: "FK_Circuits_Countries_CountryCode",
                         column: x => x.CountryCode,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "CountryCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Driver",
+                name: "Drivers",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -62,16 +62,16 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Driver", x => x.ID);
+                    table.PrimaryKey("PK_Drivers", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Driver_Country_CountryCode",
+                        name: "FK_Drivers_Countries_CountryCode",
                         column: x => x.CountryCode,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "CountryCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Grandprix",
+                name: "GrandPrixs",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -83,16 +83,16 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Grandprix", x => x.ID);
+                    table.PrimaryKey("PK_GrandPrixs", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Grandprix_Country_CountryCode",
+                        name: "FK_GrandPrixs_Countries_CountryCode",
                         column: x => x.CountryCode,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "CountryCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Team",
+                name: "Teams",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -104,16 +104,16 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Team", x => x.ID);
+                    table.PrimaryKey("PK_Teams", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Team_Country_CountryCode",
+                        name: "FK_Teams_Countries_CountryCode",
                         column: x => x.CountryCode,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "CountryCode");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Result",
+                name: "Results",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -130,93 +130,93 @@ namespace F1Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Result", x => x.ID);
+                    table.PrimaryKey("PK_Results", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Result_Circuit_CircuitID",
+                        name: "FK_Results_Circuits_CircuitID",
                         column: x => x.CircuitID,
-                        principalTable: "Circuit",
+                        principalTable: "Circuits",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Result_Driver_DriverID",
+                        name: "FK_Results_Drivers_DriverID",
                         column: x => x.DriverID,
-                        principalTable: "Driver",
+                        principalTable: "Drivers",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Result_Grandprix_GrandprixID",
+                        name: "FK_Results_GrandPrixs_GrandprixID",
                         column: x => x.GrandprixID,
-                        principalTable: "Grandprix",
+                        principalTable: "GrandPrixs",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Result_Team_TeamID",
+                        name: "FK_Results_Teams_TeamID",
                         column: x => x.TeamID,
-                        principalTable: "Team",
+                        principalTable: "Teams",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Circuit_CountryCode",
-                table: "Circuit",
+                name: "IX_Circuits_CountryCode",
+                table: "Circuits",
                 column: "CountryCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Driver_CountryCode",
-                table: "Driver",
+                name: "IX_Drivers_CountryCode",
+                table: "Drivers",
                 column: "CountryCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Grandprix_CountryCode",
-                table: "Grandprix",
+                name: "IX_GrandPrixs_CountryCode",
+                table: "GrandPrixs",
                 column: "CountryCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_CircuitID",
-                table: "Result",
+                name: "IX_Results_CircuitID",
+                table: "Results",
                 column: "CircuitID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_DriverID",
-                table: "Result",
+                name: "IX_Results_DriverID",
+                table: "Results",
                 column: "DriverID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_GrandprixID",
-                table: "Result",
+                name: "IX_Results_GrandprixID",
+                table: "Results",
                 column: "GrandprixID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_TeamID",
-                table: "Result",
+                name: "IX_Results_TeamID",
+                table: "Results",
                 column: "TeamID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Team_CountryCode",
-                table: "Team",
+                name: "IX_Teams_CountryCode",
+                table: "Teams",
                 column: "CountryCode");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Result");
+                name: "Results");
 
             migrationBuilder.DropTable(
-                name: "Circuit");
+                name: "Circuits");
 
             migrationBuilder.DropTable(
-                name: "Driver");
+                name: "Drivers");
 
             migrationBuilder.DropTable(
-                name: "Grandprix");
+                name: "GrandPrixs");
 
             migrationBuilder.DropTable(
-                name: "Team");
+                name: "Teams");
 
             migrationBuilder.DropTable(
-                name: "Country");
+                name: "Countries");
         }
     }
 }

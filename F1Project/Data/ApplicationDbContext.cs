@@ -5,12 +5,12 @@ namespace F1Project.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Country> Country { get; set; }
-        public DbSet<Circuit> Circuit { get; set; }
-        public DbSet<Team> Team { get; set; }
-        public DbSet<Grandprix> Grandprix { get; set; }
-        public DbSet<Result> Result { get; set; }
-        public DbSet<Driver> Driver { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Circuit> Circuits { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Grandprix> GrandPrixs { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
     
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
     }

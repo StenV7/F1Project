@@ -55,7 +55,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("Circuit");
+                    b.ToTable("Circuits");
                 });
 
             modelBuilder.Entity("F1Project.Models.Country", b =>
@@ -83,7 +83,7 @@ namespace F1Project.Migrations
 
                     b.HasKey("CountryCode");
 
-                    b.ToTable("Country");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("F1Project.Models.Driver", b =>
@@ -120,7 +120,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("Driver");
+                    b.ToTable("Drivers");
                 });
 
             modelBuilder.Entity("F1Project.Models.Grandprix", b =>
@@ -150,7 +150,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("Grandprix");
+                    b.ToTable("GrandPrixs");
                 });
 
             modelBuilder.Entity("F1Project.Models.Result", b =>
@@ -199,7 +199,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("TeamID");
 
-                    b.ToTable("Result");
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("F1Project.Models.Team", b =>
@@ -229,7 +229,7 @@ namespace F1Project.Migrations
 
                     b.HasIndex("CountryCode");
 
-                    b.ToTable("Team");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("F1Project.Models.Circuit", b =>
