@@ -12,7 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-
+            <th>
+                #
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -40,7 +42,11 @@
     <tbody>
         @foreach (var item in Model)
         {
+            
             <tr>
+                <td>
+                     
+                </td>
                 <td>
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
                 </td>
@@ -51,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.Circuit.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Driver.Name)
+                    <a asp-controller="Driver" asp-route-id="@item.Driver.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Driver.Name)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Team.Name)
