@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace F1Project.Models
+namespace F1Lib.Models
 {
     public class Driver
     {
@@ -24,6 +24,6 @@ namespace F1Project.Models
         [Display(Name ="Foto")]
         public string? ImageUrl { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; } = Enumerable.Empty<Result>();
+        public IEnumerable<Result> Races { get; set; }
     }
 }

@@ -16,6 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Races)
             </th>
+            <th>
+                Statistieken
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -28,7 +31,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Races)
             </td>
-            
+            <td>
+                <a asp-controller="Result" asp-route-id="@item.Year" asp-action="index">Statistieken</a>
+            </td>
           
         </tr>
 }

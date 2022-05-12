@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using F1Lib.Models;
 using F1Project.Data;
-using F1Project.Models;
 
 namespace F1Project.Controllers
 {
@@ -20,11 +20,14 @@ namespace F1Project.Controllers
         }
 
         // GET: Result
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id = 0)
         {
-              return _context.Results != null ? 
-                          View(await _context.Results.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Results'  is null.");
+
+            var resultsList = _context.Results.Include(x => x.Grandprix).Include(x => x.Circuit).Include(z => z.Team).Include(n => n.Driver).ToList();
+
+            return View(resultsList.Where(r => r.Year == id));
+
+
         }
 
         // GET: Result/Details/5
@@ -150,14 +153,14 @@ namespace F1Project.Controllers
             {
                 _context.Results.Remove(result);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ResultExists(int id)
         {
-          return (_context.Results?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Results?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

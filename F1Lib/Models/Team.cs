@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace F1Project.Models
+namespace F1Lib.Models
 {
     public class Team
     {
@@ -13,6 +13,6 @@ namespace F1Project.Models
         [Display(Name ="wiki pagina")]
         public string? Wiki { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; } = Enumerable.Empty<Result>();
+        public IEnumerable<Result> Races { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using F1Lib.ViewModels;
-using F1Project.Models;
+using F1Lib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace F1Project.Data

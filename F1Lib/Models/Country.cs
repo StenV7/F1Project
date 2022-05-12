@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace F1Project.Models
+namespace F1Lib.Models
 {
     public class Country
     {

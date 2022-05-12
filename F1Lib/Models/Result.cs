@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace F1Project.Models
+namespace F1Lib.Models
 {
     public class Result
     {
@@ -15,9 +15,13 @@ namespace F1Project.Models
         public byte Rounds { get; set; }
         [Display(Name = "Jaar")]
         public string Time { get; set; } = string.Empty;
+       
         public Driver Driver { get; set; }
+        
         public Grandprix Grandprix { get; set; }
+        
         public Circuit Circuit { get; set; }
+        
         public Team Team { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace F1Project.Models
+namespace F1Lib.Models
 {
     public class Grandprix
     {
@@ -12,6 +12,7 @@ namespace F1Project.Models
         [StringLength(250,ErrorMessage ="MaximumLengte van {0} is {1} Tekens")]
         public string? Wiki { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; } = Enumerable.Empty<Result>();
+
+        public IEnumerable<Result> Races { get; set; }
     }
 }

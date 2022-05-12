@@ -1,10 +1,11 @@
 ﻿using F1Lib.ViewModels;
 using F1Project.Data;
-using F1Project.Models;
+using F1Lib.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-
+using F1Lib.Models;
+using F1Project.Models;
 
 namespace F1Project.Controllers
 {
