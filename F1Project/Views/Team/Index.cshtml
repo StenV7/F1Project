@@ -1,4 +1,4 @@
-﻿@model IEnumerable<F1Lib.Models.Driver>
+﻿@model IEnumerable<F1Lib.Models.Team>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,16 +16,10 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Wiki)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
             <th></th>
         </tr>
@@ -37,16 +31,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td class="tableelementmakeup">
-                @Html.DisplayFor(modelItem => item.BirthDate)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td class="tableelementmakeup">
                 @Html.DisplayFor(modelItem => item.Wiki)
-            </td>
-            <td class="tableelementmakeup">
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td class="tableelementmakeup">
-                <img src="@item.ImageUrl">
             </td>
             <td class="tableelementmakeup">
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

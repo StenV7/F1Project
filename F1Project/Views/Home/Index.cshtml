@@ -8,7 +8,7 @@
 
 
 <table class="table">
-    <thead>
+    <thead class="tableheadermakeup">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Year)
@@ -16,25 +16,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Races)
             </th>
-            <th>
-                Statistieken
-            </th>
-            <th></th>
+           
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
+            <td class = "tableelementmakeup hyperlinkmakeup">
+                <a asp-controller="Result" asp-route-id="@item.Year" asp-action="index">@Html.DisplayFor(modelItem => item.Year)</a>
             </td>
-            <td>
+            <td class="tableelementmakeup">
                 @Html.DisplayFor(modelItem => item.Races)
             </td>
-            <td>
-                <a asp-controller="Result" asp-route-id="@item.Year" asp-action="index">Statistieken</a>
-            </td>
-          
         </tr>
 }
     </tbody>

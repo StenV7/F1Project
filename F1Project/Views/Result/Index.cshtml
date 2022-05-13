@@ -10,7 +10,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
+    <thead class="tableheadermakeup">
         <tr>
             <th>
                 #
@@ -44,31 +44,31 @@
         {
             
             <tr>
-                <td>
+                <td class="tableelementmakeup">
                      
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     @Html.DisplayFor(modelItem => item.Grandprix.Name)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Circuit.Name)
+                <td class="tableelementmakeup">
+                    <a asp-controller="Driver" asp-route-id="@item.Circuit.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Circuit.Name)</a>
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     <a asp-controller="Driver" asp-route-id="@item.Driver.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Driver.Name)</a>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Team.Name)
+                <td class="tableelementmakeup">
+                    <a asp-controller="Driver" asp-route-id="@item.Team.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Team.Name)</a>
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     @Html.DisplayFor(modelItem => item.Rounds)
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     @Html.DisplayFor(modelItem => item.Time)
                 </td>
-                <td>
+                <td class="tableelementmakeup">
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
