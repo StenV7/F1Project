@@ -20,13 +20,34 @@ namespace F1Project.Controllers
         }
 
         // GET: Result
-        public async Task<IActionResult> Index(int? id = 0)
+        public async Task<IActionResult> Index(int? id = 0, int filter = 0)
         {
+            List<int> years = new List<int>();
+            for (int i = DateTime.Now.Year; i >=1950; i--)
+            {
+                years.Add(i);
+            }
 
-            var resultsList = _context.Results.Include(x => x.Grandprix).Include(x => x.Circuit).Include(z => z.Team).Include(n => n.Driver).ToList();
+            if (filter==0)
+            {
+                filter = years[0];
+            }
+
+            ViewBag.Year = new SelectList(years, filter);
+
+            
+
+            var resultsList = _context.Results.Include(x => x.Grandprix).Include(x => x.Circuit).Include(z => z.Team).Include(n => n.Driver)./*Include(c => c.Countries).*/ToList();
 
             return View(resultsList.Where(r => r.Year == id));
-
+            if (filter > 0)
+            {
+                resultsList = resultsList.Where(r => r.Year == filter).ToList();
+            }
+            if (resultsList == null)
+            {
+                return Problem("Entity set applicationdbcontezxxt.results is null");
+            }
 
         }
 

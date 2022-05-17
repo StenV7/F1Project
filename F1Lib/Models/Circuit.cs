@@ -14,7 +14,7 @@ namespace F1Lib.Models
         [StringLength(250, ErrorMessage = "MaximumLengte van {0} is {1} tekens")]
         public string? Wiki { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; }
+        public IEnumerable<Result>? Races { get; set; }
 
 
     }

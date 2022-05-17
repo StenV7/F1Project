@@ -23,7 +23,10 @@ namespace F1Project.Controllers
         public async Task<IActionResult> Index(string? id = "")
         {
             var driversList = _context.Drivers.ToList();
-
+            if (string.IsNullOrEmpty(id))
+            {
+                return View(driversList);
+            }
             return View(driversList.Where(r => r.Name == id));
         }
 
@@ -115,7 +118,7 @@ namespace F1Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(driver);
+            return RedirectToAction("Index");
         }
 
         // GET: Driver/Delete/5

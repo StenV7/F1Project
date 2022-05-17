@@ -13,6 +13,6 @@ namespace F1Lib.Models
         [Display(Name ="wiki pagina")]
         public string? Wiki { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; }
+        public IEnumerable<Result>? Races { get; set; }
     }
 }

@@ -4,10 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="color:darkgray">F1 Statistics</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
+    <form method="get">
+        <select onchange="this.form.submit()" name="filter" asp-items="@ViewBag.Year">
+
+        </select>
+    </form>
 </p>
 <table class="table">
     <thead class="tableheadermakeup">
@@ -42,10 +47,9 @@
     <tbody>
         @foreach (var item in Model)
         {
-            
+
             <tr>
                 <td class="tableelementmakeup">
-                     
                 </td>
                 <td class="tableelementmakeup">
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
@@ -54,13 +58,14 @@
                     @Html.DisplayFor(modelItem => item.Grandprix.Name)
                 </td>
                 <td class="tableelementmakeup">
-                    <a asp-controller="Driver" asp-route-id="@item.Circuit.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Circuit.Name)</a>
+                    <a asp-controller="Circuit" asp-route-id="@item.Circuit.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Circuit.Name)</a>
                 </td>
                 <td class="tableelementmakeup">
+                    @*<img src="@item.FlagUrl">*@
                     <a asp-controller="Driver" asp-route-id="@item.Driver.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Driver.Name)</a>
                 </td>
                 <td class="tableelementmakeup">
-                    <a asp-controller="Driver" asp-route-id="@item.Team.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Team.Name)</a>
+                    <a asp-controller="Team" asp-route-id="@item.Team.Name" asp-action="index">@Html.DisplayFor(modelItem => item.Team.Name)</a>
                 </td>
                 <td class="tableelementmakeup">
                     @Html.DisplayFor(modelItem => item.Rounds)

@@ -22,8 +22,11 @@ namespace F1Project.Controllers
         // GET: Team
         public async Task<IActionResult> Index(string? id = "")
         {
-            var teamsList = _context.Drivers.ToList();
-
+            var teamsList = _context.Teams.ToList();
+            if (string.IsNullOrEmpty(id))
+            {
+                return View(teamsList);
+            }
             return View(teamsList.Where(r => r.Name == id));
         }
 
@@ -48,6 +51,7 @@ namespace F1Project.Controllers
         // GET: Team/Create
         public IActionResult Create()
         {
+            //opent de pagina
             return View();
         }
 
@@ -58,6 +62,7 @@ namespace F1Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name,Description,Wiki")] Team team)
         {
+            //na het updaten word dit uitgevoerd
             if (ModelState.IsValid)
             {
                 _context.Add(team);
@@ -115,7 +120,7 @@ namespace F1Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(team);
+            return RedirectToAction("Index");
         }
 
         // GET: Team/Delete/5
@@ -150,14 +155,14 @@ namespace F1Project.Controllers
             {
                 _context.Teams.Remove(team);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TeamExists(int id)
         {
-          return (_context.Teams?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Teams?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

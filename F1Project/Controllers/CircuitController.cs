@@ -22,9 +22,12 @@ namespace F1Project.Controllers
         // GET: Circuit
         public async Task<IActionResult> Index(string? id = "")
         {
-            var circuitsList = _context.Drivers.ToList();
-
-            return View(circuitsList.Where(r => r.Name == id));
+            var circuitList = _context.Circuits.ToList();
+            if (string.IsNullOrEmpty(id))
+            {
+                return View(circuitList);
+            }
+            return View(circuitList.Where(r => r.Name == id));
         }
 
         // GET: Circuit/Details/5
@@ -115,7 +118,7 @@ namespace F1Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(circuit);
+            return RedirectToAction("Index");
         }
 
         // GET: Circuit/Delete/5

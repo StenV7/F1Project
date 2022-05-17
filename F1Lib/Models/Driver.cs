@@ -24,6 +24,6 @@ namespace F1Lib.Models
         [Display(Name ="Foto")]
         public string? ImageUrl { get; set; } = string.Empty;
         public Country? Country { get; set; }
-        public IEnumerable<Result> Races { get; set; }
+        public IEnumerable<Result>? Races { get; set; }
     }
 }
