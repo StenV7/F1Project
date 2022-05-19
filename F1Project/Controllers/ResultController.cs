@@ -46,7 +46,7 @@ namespace F1Project.Controllers
             }
             if (resultsList == null)
             {
-                return Problem("Entity set applicationdbcontezxxt.results is null");
+                return Problem("Entity set applicationdbcontext.results is null");
             }
 
         }
