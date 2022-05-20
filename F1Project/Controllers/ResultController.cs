@@ -37,18 +37,18 @@ namespace F1Project.Controllers
 
             
 
-            var resultsList = _context.Results.Include(x => x.Grandprix).Include(x => x.Circuit).Include(z => z.Team).Include(n => n.Driver)./*Include(c => c.Countries).*/ToList();
+            var resultsList = await _context.Results.Include(x => x.Driver).ThenInclude(g => g.Country).Include(z => z.Circuit).Include(n => n.Team).ThenInclude(h=>h.Country).Include(j=>j.Grandprix).OrderBy(d=>d.Racenumber).ToListAsync();
 
-            return View(resultsList.Where(r => r.Year == id));
+            
             if (filter > 0)
             {
                 resultsList = resultsList.Where(r => r.Year == filter).ToList();
             }
             if (resultsList == null)
             {
-                return Problem("Entity set applicationdbcontext.results is null");
+                return Problem("Entity set ApplicationDbContext.Results is null");
             }
-
+            return View(resultsList);
         }
 
         // GET: Result/Details/5
