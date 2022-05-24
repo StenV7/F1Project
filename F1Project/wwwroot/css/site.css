@@ -37,3 +37,8 @@ body {
 .limitimagesize {
     max-height:50px;
 }
+
+#marginalter {
+    margin-bottom: 5rem;
+}
+

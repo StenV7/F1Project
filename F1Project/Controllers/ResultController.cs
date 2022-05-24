@@ -22,31 +22,54 @@ namespace F1Project.Controllers
         // GET: Result
         public async Task<IActionResult> Index(int? id = 0, int filter = 0)
         {
+            ViewBag.Id = id;
             List<int> years = new List<int>();
-            for (int i = DateTime.Now.Year; i >=1950; i--)
+            for (int i = DateTime.Now.Year; i >= 1950; i--)
             {
                 years.Add(i);
             }
-
-            if (filter==0)
+            int loadCount = 0;
+            if (filter == 0)
             {
+                loadCount = loadCount + 1;
                 filter = years[0];
             }
 
             ViewBag.Year = new SelectList(years, filter);
 
-            
 
-            var resultsList = await _context.Results.Include(x => x.Driver).ThenInclude(g => g.Country).Include(z => z.Circuit).Include(n => n.Team).ThenInclude(h=>h.Country).Include(j=>j.Grandprix).OrderBy(d=>d.Racenumber).ToListAsync();
 
-            
-            if (filter > 0)
+            var resultsList = await _context.Results.Include(x => x.Driver).ThenInclude(g => g.Country).Include(z => z.Circuit).Include(n => n.Team).ThenInclude(h => h.Country).Include(j => j.Grandprix).OrderBy(d => d.Racenumber).ToListAsync();
+
+
+            if (loadCount == 1)
             {
-                resultsList = resultsList.Where(r => r.Year == filter).ToList();
+                
+
+
+                if (filter > 0)
+                {
+
+                    resultsList = resultsList.Where(r => r.Year == id).ToList();
+
+                }
+                if (resultsList == null)
+                {
+                    return Problem("Entity set ApplicationDbContext.Results is null");
+                }
+                return View(resultsList);
             }
-            if (resultsList == null)
+            else if (filter != null)
             {
-                return Problem("Entity set ApplicationDbContext.Results is null");
+                if (filter > 0)
+                {
+                    resultsList = resultsList.Where(r => r.Year == filter).ToList();
+                }
+                if (resultsList == null)
+                {
+                    return Problem("Entity set ApplicationDbContext.Results is null");
+                }
+                return View(resultsList);
             }
             return View(resultsList);
         }

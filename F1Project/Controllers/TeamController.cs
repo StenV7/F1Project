@@ -33,6 +33,8 @@ namespace F1Project.Controllers
         // GET: Team/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var resultsList = await _context.Results.Include(x => x.Driver).ThenInclude(g => g.Country).Include(z => z.Circuit).Include(n => n.Team).ThenInclude(h => h.Country).Include(j => j.Grandprix).OrderBy(d => d.Racenumber).ToListAsync();
+            resultsList = resultsList.Where(r => r.ID == id).ToList();
             if (id == null || _context.Teams == null)
             {
                 return NotFound();
