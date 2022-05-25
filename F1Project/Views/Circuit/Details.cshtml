@@ -1,5 +1,5 @@
 ﻿@model F1Lib.Models.Circuit
-
+@using F1Lib.ViewModels;
 @{
     ViewData["Title"] = "Details";
 }
@@ -46,3 +46,14 @@
     <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<h5>Aantal verschillende winnaars: @Model.Races.DistinctBy(r=>r.Driver).Count()</h5>
+<h5>Beste winnaars</h5>
+<table>
+    @foreach (var winner in (List<WinnerVM>)ViewBag.Winners)
+    {
+        <tr>
+            <td>@winner.Name</td>
+            <td>@winner.Wins</td>
+        </tr>
+    }
+</table>

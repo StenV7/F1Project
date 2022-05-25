@@ -21,11 +21,12 @@ namespace F1Project.Data
         //migrationBuilder.Sql(@"DROP VIEW vwRooster");
         //Elke ViewModel heeft een eigen DbSet nodig.
         public DbSet<SeasonVM> SeasonVMs { get; set; }
-
+        public DbSet<WinnerVM> Winners { get; set; }
         protected override void OnModelCreating(ModelBuilder builder) //onmodelcreating voegt
         {
             base.OnModelCreating(builder);
             builder.Entity<SeasonVM>().ToView("vwRaces").HasNoKey();
+            builder.Entity<WinnerVM>().ToView("spCircuit").HasNoKey();
             //builder.Entity<-----Naam van ViewModel----->().ToView("----Naam van Db View----").HasNoKey();
 
         }

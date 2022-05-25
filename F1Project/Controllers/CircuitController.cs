@@ -38,12 +38,14 @@ namespace F1Project.Controllers
                 return NotFound();
             }
 
-            var circuit = await _context.Circuits
+            var circuit = await _context.Circuits.Include(c => c.Country).Include(c => c.Races).ThenInclude(r => r.Driver).ThenInclude(d => d.Races)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (circuit == null)
             {
                 return NotFound();
             }
+            ViewBag.Winners = _context.Winners.FromSqlInterpolated($"spCircuit {id} , 3").ToList();
+
 
             return View(circuit);
         }
